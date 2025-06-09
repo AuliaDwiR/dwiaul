@@ -1,0 +1,117 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bandung Wetan"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6091, -6.9075],
+          [107.6291, -6.9075],
+          [107.6291, -6.9275],
+          [107.6091, -6.9275],
+          [107.6091, -6.9075]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bandung Kulon"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.5891, -6.9075],
+          [107.6091, -6.9075],
+          [107.6091, -6.9275],
+          [107.5891, -6.9275],
+          [107.5891, -6.9075]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Coblong"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6042, -6.8697],
+          [107.6242, -6.8697],
+          [107.6242, -6.8897],
+          [107.6042, -6.8897],
+          [107.6042, -6.8697]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Antapani"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6391, -6.8997],
+          [107.6591, -6.8997],
+          [107.6591, -6.9197],
+          [107.6391, -6.9197],
+          [107.6391, -6.8997]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Buahbatu"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6242, -6.9547],
+          [107.6442, -6.9547],
+          [107.6442, -6.9747],
+          [107.6242, -6.9747],
+          [107.6242, -6.9547]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gedebage"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6691, -6.9297],
+          [107.6891, -6.9297],
+          [107.6891, -6.9497],
+          [107.6691, -6.9497],
+          [107.6691, -6.9297]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ujungberung"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6991, -6.9197],
+          [107.7191, -6.9197],
+          [107.7191, -6.9397],
+          [107.6991, -6.9397],
+          [107.6991, -6.9197]
+        ]]
+      }
+    }
+  ]
+}

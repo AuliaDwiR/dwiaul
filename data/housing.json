@@ -1,0 +1,85 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Perumahan Dago"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6042, -6.8697],
+          [107.6142, -6.8697],
+          [107.6142, -6.8797],
+          [107.6042, -6.8797],
+          [107.6042, -6.8697]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Perumahan Buah Batu"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6292, -6.9597],
+          [107.6392, -6.9597],
+          [107.6392, -6.9697],
+          [107.6292, -6.9697],
+          [107.6292, -6.9597]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Perumahan Antapani"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6441, -6.9047],
+          [107.6541, -6.9047],
+          [107.6541, -6.9147],
+          [107.6441, -6.9147],
+          [107.6441, -6.9047]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Perumahan Gedebage"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.6741, -6.9347],
+          [107.6841, -6.9347],
+          [107.6841, -6.9447],
+          [107.6741, -6.9447],
+          [107.6741, -6.9347]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Perumahan Cicendo"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [107.5941, -6.9097],
+          [107.6041, -6.9097],
+          [107.6041, -6.9197],
+          [107.5941, -6.9197],
+          [107.5941, -6.9097]
+        ]]
+      }
+    }
+  ]
+}

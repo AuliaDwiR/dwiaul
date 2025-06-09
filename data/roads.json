@@ -1,0 +1,131 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jl. Asia Afrika",
+        "type": "arterial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.6091, -6.9175],
+          [107.6141, -6.9185],
+          [107.6191, -6.9195],
+          [107.6241, -6.9205]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jl. Dago",
+        "type": "arterial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.6142, -6.8697],
+          [107.6162, -6.8797],
+          [107.6182, -6.8897],
+          [107.6202, -6.8997]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jl. Buah Batu",
+        "type": "collector"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.6342, -6.9647],
+          [107.6362, -6.9547],
+          [107.6382, -6.9447],
+          [107.6402, -6.9347]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jl. Cihampelas",
+        "type": "collector"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.6042, -6.8947],
+          [107.6062, -6.8967],
+          [107.6082, -6.8987],
+          [107.6102, -6.9007]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jl. Antapani",
+        "type": "local"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.6491, -6.9097],
+          [107.6511, -6.9117],
+          [107.6531, -6.9137]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jl. Pasteur",
+        "type": "local"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.5892, -6.8897],
+          [107.5912, -6.8917],
+          [107.5932, -6.8937]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jl. Gedebage",
+        "type": "collector"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.6791, -6.9397],
+          [107.6811, -6.9377],
+          [107.6831, -6.9357],
+          [107.6851, -6.9337]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jl. Merdeka",
+        "type": "arterial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [107.6091, -6.9217],
+          [107.6111, -6.9237],
+          [107.6131, -6.9257],
+          [107.6151, -6.9277]
+        ]
+      }
+    }
+  ]
+}

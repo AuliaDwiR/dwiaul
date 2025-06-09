@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<style>
+    #tpsMap {
+        width: 100%;
+        height: 500px;
+    }
+</style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPSMudah - Informasi TPS Kota Bandung</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>TPSMudah</h2>
+            </div>
+            <ul class="nav-menu" id="navMenu"> <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#map-section" class="nav-link">Map</a></li>
+                <li><a href="#data-section" class="nav-link">Data</a></li>
+                <li><a href="#author" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"> <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Cari Informasi TPS di Kota Bandung</h1>
+            <p class="hero-subtitle">Temukan lokasi dan informasi lengkap Tempat Pemrosesan Sampah di seluruh Kota Bandung</p>
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Cari TPS berdasarkan nama atau alamat...">
+                    <button class="search-btn" id="searchButton"> <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" id="scrollIndicator"> <div class="scroll-down"></div>
+        </div>
+    </section>
+
+    <section id="map-section" class="map-section">
+        <div class="container">
+            <h2 class="section-title">Peta Sebaran TPS Kota Bandung</h2>
+            <div class="map-container">
+                <div id="tpsMap"></div>
+                
+                <div class="map-controls">
+                    <button class="map-btn" id="homeBtn" title="Kembali ke pusat">
+                        <i class="fas fa-home"></i>
+                    </button>
+                    <button class="map-btn" id="locationBtn" title="Lokasi saya">
+                        <i class="fas fa-location-arrow"></i>
+                    </button>
+                    <button class="map-btn" id="zoomInBtn" title="Zoom in">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="map-btn" id="zoomOutBtn" title="Zoom out">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+
+                <div class="legend">
+                    <h4>Legenda</h4>
+                    <div class="legend-item">
+                        <div class="legend-symbol tps3r"></div>
+                        <span>TPS3R</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-symbol tps-building"></div>
+                        <span>TPS dengan Bangunan</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-symbol tps-no-building"></div>
+                        <span>TPS tanpa Bangunan</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-line arterial"></div>
+                        <span>Jalan Arteri</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-line collector"></div>
+                        <span>Jalan Kolektor</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-line local"></div>
+                        <span>Jalan Lokal</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-symbol district"></div>
+                        <span>Batas Kecamatan</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-symbol river"></div> <span>Sungai</span>
+                    </div>
+                </div>
+
+                <div class="layer-control" id="layerControl"> <h4>Tampilkan Layer</h4>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="data-section" class="data-section">
+        <div class="container">
+            <h2 class="section-title">Data TPS Kota Bandung</h2>
+            <p class="section-description">
+                Kota Bandung memiliki berbagai jenis Tempat Pemrosesan Sampah (TPS) yang tersebar di seluruh wilayah. 
+                Data ini mencakup informasi lengkap mengenai lokasi, kapasitas, dan jenis TPS yang ada untuk mendukung 
+                pengelolaan sampah yang lebih efektif dan berkelanjutan.
+            </p>
+            
+            <div class="carousel-container">
+                <div class="carousel" id="tpsCarousel">
+                    <div class="carousel-inner"> </div>
+                </div>
+                <button class="carousel-btn prev" id="prevSlideBtn"> <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" id="nextSlideBtn"> <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators" id="carouselIndicators">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="author" class="author-section">
+        <div class="container">
+            <h2 class="section-title">Tentang Penulis</h2>
+            <div class="author-content">
+                <div class="author-photo">
+                    <div class="photo-frame">
+                        <img src="image_24a330.png" alt="Aulia Dwi Rahma"> </div>
+                </div>
+                <div class="author-info">
+                    <h3>Aulia Dwi Rahma</h3>
+                    <p class="nim">NIM: 2304660</p>
+                    <p class="description">
+                        Merupakan mahasiswa program studi Sains Informasi Geografi, 
+                        Universitas Pendidikan Indonesia. Memiliki minat dalam bidang 
+                        sistem informasi geografis dan pengelolaan lingkungan.
+                    </p>
+                    
+                    <div class="contact-info">
+                        <h4>Hubungi Saya</h4>
+                        <div class="contact-links">
+                            <a href="https://wa.me/085864768853" class="contact-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>085864768853</span>
+                            </a>
+                            <a href="https://instagram.com/auliaululll" class="contact-link">
+                                <i class="fab fa-instagram"></i>
+                                <span>@auliaululll</span>
+                            </a>
+                            <a href="mailto:dwirahmaaulia@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>dwirahmaaulia@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="web-description">
+                        <p>
+                            Web ini dibuat untuk memenuhi tugas WebGIS dengan tema memberikan 
+                            informasi mengenai sebaran TPS di Kota Bandung. Aplikasi ini 
+                            mengintegrasikan data spasial dan non-spasial untuk memberikan 
+                            visualisasi yang komprehensif mengenai lokasi dan karakteristik 
+                            TPS di seluruh wilayah Kota Bandung.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 TPSMudah - Aulia Dwi Rahma. All rights reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+        // Script untuk menu mobile
+        const mobileMenu = document.querySelector('.mobile-menu');
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            // Toggle visibility of navigation menu for mobile
+            const nav = document.querySelector('nav');
+            if (this.classList.contains('active')) {
+                nav.style.display = 'block';
+            } else {
+                nav.style.display = ''; // Reset to default or use 'none' if preferred
+            }
+        });
+
+        // Fungsi Filter Kategori
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update tombol aktif
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter TPS
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.tps-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.kategori === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll untuk navigasi
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                    // Tutup menu mobile setelah klik (jika terbuka)
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    document.querySelector('nav').style.display = '';
+                }
+            });
+        });
+
+        // Inisialisasi Peta Leaflet
+        const map = L.map('tpsMap').setView([-6.9147, 107.6098], 12); // Koordinat pusat Bandung
+
+        // Tambahkan base map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // --- Definisi Ikon Kustom ---
+        // Fungsi untuk mendapatkan URL ikon berdasarkan tipe TPS
+        function getIconUrl(type) {
+            const icons = {
+                'TPS tanpa bangunan': 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png', 
+                'TPS dengan bangunan': 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png', 
+                'TPS 3R': 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png', 
+                'default': 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png'
+            };
+            return icons[type] || icons['default'];
+        }
+
+        // Fungsi untuk membuat ikon kustom Leaflet
+        function getCustomIcon(kategori) {
+            let iconType;
+            if (kategori && kategori.toLowerCase().includes('tps tanpa bangunan')) {
+                iconType = 'TPS tanpa bangunan';
+            } else if (kategori && kategori.toLowerCase().includes('tps dengan bangunan')) {
+                iconType = 'TPS dengan bangunan';
+            } else if (kategori && kategori.toLowerCase().includes('tps 3r')) {
+                iconType = 'TPS 3R';
+            } else {
+                iconType = 'default';
+            }
+
+            return L.icon({
+                iconUrl: getIconUrl(iconType),
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34]
+            });
+        }
+        
+        // Fungsi untuk mendapatkan nama tipe yang lebih ramah pengguna (ditambahkan untuk jalan)
+        function getTypeName(type) {
+            const names = {
+                'TPS tanpa bangunan': 'TPS tanpa bangunan',
+                'TPS dengan bangunan': 'TPS dengan bangunan',
+                'TPS 3R': 'TPS 3R',
+                'permukiman': 'Area Permukiman',
+                'Jalan Arteri': 'Jalan Arteri', 
+                'Jalan Kolektor': 'Jalan Kolektor', 
+                'Jalan Lokal': 'Jalan Lokal',
+                'Jalan Lain': 'Jalan Lain'
+            };
+            return names[type] || 'Umum';
+        }
+
+        // --- Layer Groups untuk Overlays ---
+        const tpsTanpaBangunanLayer = L.layerGroup();
+        const tpsDenganBangunanLayer = L.layerGroup();
+        const tps3RLayer = L.layerGroup();
+        const tpsOtherLayer = L.layerGroup(); 
+        const permukimanLayer = L.layerGroup(); 
+        const batasKecamatanLayer = L.layerGroup(); 
+        const jalanArteriLayer = L.layerGroup(); 
+        const jalanKolektorLayer = L.layerGroup();
+        const jalanLokalLayer = L.layerGroup();
+        const jalanLainLayer = L.layerGroup();
+
+
+        // --- Fungsi Load GeoJSON ---
+
+        // 1. Load Data TPS (TITIK_TPS.geojson)
+        function loadTPSData() {
+            fetch('TITIK_TPS.geojson')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    L.geoJSON(data, {
+                        pointToLayer: function(feature, latlng) {
+                            const kategori = feature.properties.kategori; 
+                            return L.marker(latlng, {
+                                icon: getCustomIcon(kategori)
+                            });
+                        },
+                        onEachFeature: function(feature, layer) {
+                            const props = feature.properties;
+                            let popupContent = `
+                                <h3>${props.nama_tps || 'Nama TPS Tidak Tersedia'}</h3>
+                                <table class="popup-table">
+                                    <tr><td>Alamat</td><td>: ${props.alamat || 'Tidak Tersedia'}</td></tr>
+                                    <tr><td>Kecamatan</td><td>: ${props.kecamatan || 'Tidak Tersedia'}</td></tr>
+                                    <tr><td>Kapasitas</td><td>: ${props.kapasitas || 'Tidak Tersedia'}</td></tr>
+                                    <tr><td>Kategori</td><td>: ${props.kategori || 'Tidak Tersedia'}</td></tr> 
+                                    <tr><td>Jam Op.</td><td>: ${props.jam_operasional || 'Tidak Tersedia'}</td></tr>
+                                    <tr><td>Jadwal Angkut</td><td>: ${props.jadwal_angkut || 'Tidak Tersedia'}</td></tr>
+                                    <tr><td>Penanggung Jawab</td><td>: ${props.penanggung_jawab || 'Tidak Tersedia'}</td></tr>
+                                    <tr><td>Kontak</td><td>: ${props.kontak_tps || 'Tidak Tersedia'}</td></tr>
+                                    ${props.foto_url ? `<tr><td colspan="2"><img src="${props.foto_url}" class="popup-image" alt="Foto TPS"></td></tr>` : ''}
+                                </table>
+                            `;
+                            layer.bindPopup(popupContent);
+
+                            const kategoriTPS = props.kategori ? props.kategori.toLowerCase() : '';
+                            if (kategoriTPS.includes('tps tanpa bangunan')) {
+                                tpsTanpaBangunanLayer.addLayer(layer);
+                            } else if (kategoriTPS.includes('tps dengan bangunan')) {
+                                tpsDenganBangunanLayer.addLayer(layer);
+                            } else if (kategoriTPS.includes('tps 3r')) {
+                                tps3RLayer.addLayer(layer);
+                            } else {
+                                tpsOtherLayer.addLayer(layer);
+                            }
+                        }
+                    });
+                    tpsTanpaBangunanLayer.addTo(map);
+                    tpsDenganBangunanLayer.addTo(map);
+                    tps3RLayer.addTo(map);
+                })
+                .catch(error => {
+                    console.error('Error loading TPS GeoJSON:', error);
+                    alert('Gagal memuat data TPS. Cek konsol browser untuk detail.');
+                });
+        }
+
+        // 2. Load Data Permukiman (PERMUKIMAN.geojson)
+        function loadPermukimanData() {
+            fetch('PERMUNGKIMAN.geojson') 
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    L.geoJSON(data, {
+                        style: function(feature) {
+                            return {
+                                fillOpacity: 0.3,
+                                weight: 1,
+                                color: '#000000', // Warna border biru muda
+                                fillColor: '#f08080' // Warna fill biru sangat muda
+                            };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            layer.bindPopup(`<h3>Area Permukiman</h3>`);
+                            permukimanLayer.addLayer(layer);
+                        }
+                    }).addTo(map);
+                })
+                .catch(error => {
+                    console.error('Error loading Permukiman GeoJSON:', error);
+                    alert('Gagal memuat data permukiman. Cek konsol browser untuk detail.');
+                });
+        }
+
+        // 3. Load Data Batas Kecamatan (Batas_Kecamatan.geojson)
+        function loadBatasKecamatanData() {
+            fetch('ADMKEC_BANDUNG.geojson')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    L.geoJSON(data, {
+                        style: function(feature) {
+                            const color = '#3498db'; // Warna biru untuk batas kecamatan
+                            return {
+                                fillColor: color,
+                                weight: 3,
+                                opacity: 1,
+                                color: '#333', // Warna garis batas
+                                dashArray: '5, 5', // Garis putus-putus
+                                fillOpacity: 0.2
+                            };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            const props = feature.properties;
+                            const kecamatanName = props.NAMOBJ || 'Nama Kecamatan Tidak Tersedia';
+                            layer.bindTooltip(kecamatanName, {
+                                permanent: true,
+                                direction: 'center',
+                                className: 'kecamatan-label' // Gunakan class CSS yang baru
+                            }).openTooltip();
+
+                            let popupContent = `
+                                <h3>Kecamatan ${kecamatanName}</h3>
+                                <table class="popup-table">
+                                    <tr><td>Luas</td><td>: ${props.Luas_Km2 ? `${props.Luas_Km2} km²` : 'Tidak Tersedia'}</td></tr>
+                                    <tr><td>Populasi</td><td>: ${props.Populasi_2020 || 'Tidak Tersedia'}</td></tr>
+                                    <tr><td>Kepadatan</td><td>: ${props.Kepadatan_Jiwa_Km2 || 'Tidak Tersedia'} jiwa/km²</td></tr>
+                                </table>
+                            `;
+                            layer.bindPopup(popupContent);
+                            batasKecamatanLayer.addLayer(layer);
+                        }
+                    }).addTo(map); // Langsung tambahkan ke peta secara default
+                })
+                .catch(error => {
+                    console.error('Error loading Batas Kecamatan GeoJSON:', error);
+                    alert('Gagal memuat data Batas Kecamatan. Cek konsol browser untuk detail.');
+                });
+        }
+
+        // 4. Load Data Jalan (JALAN.geojson)
+        function loadJalanData() {
+            fetch('JALAN_2.geojson')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    L.geoJSON(data, {
+                        style: function(feature) {
+                            const jenisJalan = feature.properties.fungsi; // Sesuaikan dengan nama atribut jenis jalan di GeoJSON Anda
+                            let color = '#ccc'; // Default color
+                            let weight = 2;
+
+                            if (jenisJalan) {
+                                if (jenisJalan.toLowerCase().includes('arteri')) {
+                                    color = '#FF0000'; // Merah untuk jalan arteri
+                                    weight = 4;
+                                } else if (jenisJalan.toLowerCase().includes('kolektor')) {
+                                    color = '#FFA500'; // Oranye untuk jalan kolektor
+                                    weight = 3;
+                                } else if (jenisJalan.toLowerCase().includes('lokal')) {
+                                    color = '#0000FF'; // Biru untuk jalan lokal
+                                    weight = 2;
+                                }
+                            }
+                            return { color: color, weight: weight };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            if (feature.properties && feature.properties.nama_ruas) {
+                                layer.bindPopup(`<strong>Jalan:</strong> ${feature.properties.nama_ruas}<br><strong>Fungsi:</strong> ${feature.properties.fungsi}`);
+                            }
+
+                            const jenisJalan = feature.properties.fungsi ? feature.properties.fungsi.toLowerCase() : '';
+                            if (jenisJalan.includes('arteri')) {
+                                jalanArteriLayer.addLayer(layer);
+                            } else if (jenisJalan.includes('kolektor')) {
+                                jalanKolektorLayer.addLayer(layer);
+                            } else if (jenisJalan.includes('lokal')) {
+                                jalanLokalLayer.addLayer(layer);
+                            } else {
+                                jalanLainLayer.addLayer(layer);
+                            }
+                        }
+                    }).addTo(map);
+                })
+                .catch(error => {
+                    console.error('Error loading Jalan GeoJSON:', error);
+                    alert('Gagal memuat data jalan. Cek konsol browser untuk detail.');
+                });
+        }
+
+        // Panggil fungsi untuk memuat data saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTPSData();
+            loadPermukimanData();
+            loadBatasKecamatanData();
+            loadJalanData();
+        });
+
+
+        // --- Kontrol Layer dan Legenda ---
+        const overlayMaps = {
+            "TPS 3R": tps3RLayer,
+            "TPS dengan bangunan": tpsDenganBangunanLayer,
+            "TPS tanpa bangunan": tpsTanpaBangunanLayer,
+            "Area Permukiman": permukimanLayer,
+            "Batas Kecamatan": batasKecamatanLayer,
+            "Jalan Arteri": jalanArteriLayer,
+            "Jalan Kolektor": jalanKolektorLayer,
+            "Jalan Lokal": jalanLokalLayer,
+            "Jalan Lain": jalanLainLayer 
+        };
+
+        L.control.layers(null, overlayMaps, { collapsed: false }).addTo(map);
+
+        // Legenda Kustom
+        const legend = L.control({ position: 'bottomright' });
+
+        legend.onAdd = function (map) {
+            const div = L.DomUtil.create('div', 'info legend');
+            const categories = [
+                { name: 'TPS 3R', color: '#007bff', type: 'marker' },
+                { name: 'TPS dengan bangunan', color: '#dc3545', type: 'marker' },
+                { name: 'TPS tanpa bangunan', color: '#28a745', type: 'marker' },
+                { name: 'Area Permukiman', color: '#e6f7ff', borderColor: '#b3e0ff', type: 'polygon' },
+                { name: 'Batas Kecamatan', color: 'red', dashArray: '5, 5', type: 'polygon-border' },
+                { name: 'Jalan Arteri', color: '#FF0000', type: 'line' },
+                { name: 'Jalan Kolektor', color: '#FFA500', type: 'line' },
+                { name: 'Jalan Lokal', color: '#0000FF', type: 'line' },
+                { name: 'Jalan Lain', color: '#ccc', type: 'line' }
+            ];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (let i = 0; i < categories.length; i++) {
+                const category = categories[i];
+                let iconHtml = '';
+                if (category.type === 'marker') {
+                    // Marker icon (ambil warna dari URL ikon)
+                    const markerIconUrl = getIconUrl(category.name);
+                    iconHtml = `<img src="${markerIconUrl}" style="width: 18px; height: 18px; float: left; margin-right: 8px;">`;
+                } else if (category.type === 'polygon') {
+                    iconHtml = `<i style="background:${category.color}; border: 1px solid ${category.borderColor || category.color};"></i>`;
+                } else if (category.type === 'polygon-border') {
+                    iconHtml = `<div class="polygon-entry"><i style="border-color:${category.color}; border-style:dashed; border-width:2px; height:18px;"></i></div>`;
+                } else if (category.type === 'line') {
+                    iconHtml = `<div class="line-entry"><i style="background:${category.color}; height:3px; width:30px; margin-top:8px;"></i></div>`;
+                }
+                
+                div.innerHTML +=
+                    '<div>' + iconHtml + getTypeName(category.name) + '</div>';
+            }
+            return div;
+        };
+
+        legend.addTo(map);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS3R Cicendo",
+        "address": "Jl. Cicendo No. 45, Bandung Barat",
+        "lat": -6.9147,
+        "lng": 107.5991,
+        "type": "tps3r",
+        "capacity": "500 ton/hari",
+        "contact": "022-2504567",
+        "description": "TPS dengan fasilitas pengolahan sampah terpadu dan modern, dilengkapi dengan teknologi reduce, reuse, recycle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.5991, -6.9147]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS Dago Pakar",
+        "address": "Jl. Dago Pakar No. 12, Bandung Utara",
+        "lat": -6.8697,
+        "lng": 107.6142,
+        "type": "tps-building",
+        "capacity": "300 ton/hari",
+        "contact": "022-2501234",
+        "description": "TPS dengan bangunan permanen dan fasilitas lengkap untuk melayani daerah Dago dan sekitarnya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6142, -6.8697]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS Cihampelas",
+        "address": "Jl. Cihampelas No. 88, Bandung Barat",
+        "lat": -6.8947,
+        "lng": 107.6042,
+        "type": "tps-no-building",
+        "capacity": "200 ton/hari",
+        "contact": "022-2507890",
+        "description": "TPS sementara untuk melayani daerah pemukiman padat di sekitar Cihampelas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6042, -6.8947]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS3R Buah Batu",
+        "address": "Jl. Buah Batu No. 156, Bandung Selatan",
+        "lat": -6.9647,
+        "lng": 107.6342,
+        "type": "tps3r",
+        "capacity": "400 ton/hari",
+        "contact": "022-2503456",
+        "description": "TPS modern dengan teknologi pengolahan ramah lingkungan dan fasilitas kompos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6342, -6.9647]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS Antapani",
+        "address": "Jl. Antapani No. 67, Bandung Timur",
+        "lat": -6.9097,
+        "lng": 107.6491,
+        "type": "tps-building",
+        "capacity": "350 ton/hari",
+        "contact": "022-2508901",
+        "description": "TPS dengan fasilitas daur ulang dan kompos, melayani kawasan Antapani dan sekitarnya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6491, -6.9097]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS Pasteur",
+        "address": "Jl. Pasteur No. 23, Bandung Selatan",
+        "lat": -6.8897,
+        "lng": 107.5892,
+        "type": "tps-no-building",
+        "capacity": "250 ton/hari",
+        "contact": "022-2506789",
+        "description": "TPS untuk melayani daerah Pasteur dan kawasan sekitar universitas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.5892, -6.8897]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS3R Gedebage",
+        "address": "Jl. Gedebage Selatan No. 45, Bandung Timur",
+        "lat": -6.9397,
+        "lng": 107.6791,
+        "type": "tps3r",
+        "capacity": "600 ton/hari",
+        "contact": "022-2509012",
+        "description": "TPS terbesar di Bandung Timur dengan fasilitas pengolahan sampah terpadu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6791, -6.9397]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS Alun-alun",
+        "address": "Jl. Asia Afrika No. 100, Bandung Tengah",
+        "lat": -6.9217,
+        "lng": 107.6091,
+        "type": "tps-building",
+        "capacity": "400 ton/hari",
+        "contact": "022-2502345",
+        "description": "TPS strategis di pusat kota yang melayani kawasan bisnis dan perkantoran"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6091, -6.9217]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS Cigadung",
+        "address": "Jl. Cigadung Raya No. 78, Bandung Timur",
+        "lat": -6.8747,
+        "lng": 107.6441,
+        "type": "tps-no-building",
+        "capacity": "180 ton/hari",
+        "contact": "022-2507123",
+        "description": "TPS untuk melayani pemukiman di kawasan Cigadung"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.6441, -6.8747]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TPS3R Ujungberung",
+        "address": "Jl. Ujungberung No. 234, Bandung Timur",
+        "lat": -6.9297,
+        "lng": 107.7091,
+        "type": "tps3r",
+        "capacity": "450 ton/hari",
+        "contact": "022-2510456",
+        "description": "TPS dengan teknologi modern untuk kawasan industri Ujungberung"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.7091, -6.9297]
+      }
+    }
+  ]
+}
