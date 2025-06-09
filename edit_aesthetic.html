@@ -766,7 +766,7 @@ body {
                 <li><a href="#statistik">Statistik</a></li>
                 <li><a href="#data">Data TPS</a></li>
                 <li><a href="#peta">Peta Interaktif</a></li>
-                <li><a href="#Tentang Penulis">Tentang Penulis</a></li> </ul>
+                <li><a href="#Tentang Penulis">Tentang Penulis`</a></li> </ul>
         </nav>
 
         <div class="header-content">
@@ -1061,7 +1061,7 @@ body {
 
         // 1. Load Data TPS (TITIK_TPS.geojson)
         function loadTPSData() {
-            fetch('ASSET/TITIK_TPS.geojson')
+            fetch('./ASSET/TITIK_TPS.geojson')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -1110,7 +1110,7 @@ body {
 
         // 2. Load Data Permukiman (PERMUKIMAN.geojson)
         function loadPermukimanData() {
-            fetch('ASSET/PERMUNGKIMAN.geojson') 
+            fetch('./ASSET/PERMUNGKIMAN.geojson') 
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -1141,7 +1141,7 @@ body {
 
         // 3. Load Data Batas Kecamatan (Batas_Kecamatan.geojson)
         function loadBatasKecamatanData() {
-            fetch('ASSET/ADMKEC_BANDUNG.geojson')
+            fetch('./ASSET/ADMKEC_BANDUNG.geojson')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
